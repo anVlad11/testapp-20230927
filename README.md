@@ -48,6 +48,6 @@ Response:
 ```
 
 ### How to run tests
-To run tests, do `make test` or just `go test ./...` in the project directory. 
+To run tests, do `make test` or just `go test -v ./...` in the project directory. 
 
 Only `CreateOrder` method of `internal/services/order.Service` is covered.
