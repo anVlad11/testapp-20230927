@@ -1,0 +1,8 @@
+# API HTTP server config
+http_server:
+  address: 0.0.0.0
+  port: 59999
+  listen: true
+# Order service config
+orders:
+  pack_sizes: [250, 500, 1000, 2000, 5000]

@@ -1,0 +1,71 @@
+openapi: 3.0.1
+info:
+  title: Testapp 20230927 Backend
+  version: 1.0.0
+servers:
+  - url: http://localhost:59999
+paths:
+  /v1/order:
+    post:
+      description: Create new order
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/V1CreateOrderRequestBody"
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/V1CreateOrderSuccessfulResponseBody"
+        400:
+          description: Bad request response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/V1CreateOrderErrorResponseBody"
+components:
+  schemas:
+    V1CreateOrderRequestBody:
+      type: object
+      properties:
+        items_count:
+          type: integer
+          x-go-type: int
+          description: Amount of items in order
+          minLength: 0
+      required:
+        - items_count
+    V1CreateOrderSuccessfulResponseBody:
+      type: object
+      properties:
+        packs:
+          description: Pack list in the order
+          type: array
+          items:
+            $ref: "#/components/schemas/V1Pack"
+      required:
+        - packs
+    V1Pack:
+      type: object
+      required:
+        - size
+        - count
+      properties:
+        size:
+          type: integer
+          description: Size of the pack, in items
+        count:
+          type: integer
+          description: Amount of packs in order
+    V1CreateOrderErrorResponseBody:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error description
+      required:
+        - error

@@ -12,7 +12,7 @@ To use a configuration file, pass a path to it via `--config-path` flag.
 ### How to run
 You could use `make run-local` in the project directory to build and run the application with default config path.
 
-Alternatively, you could run the application with `go build ./cmd/app --config-path {path_to_config.yaml}` to use different config file.
+Alternatively, you could run the application with `go run ./cmd/app --config-path {path_to_config.yaml}` to use different config file.
 
 ### How to access
 If application started correctly, you'll be able to access OpenAPI specification UI for it via browser. With default config, you could go to http://localhost:59999/_/docs/ to access it.
